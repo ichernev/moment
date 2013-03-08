@@ -1111,7 +1111,7 @@
         },
 
         toDate : function () {
-            return this._d;
+            return this._offset ? new Date(+this) : this._d;
         },
 
         toJSON : function () {
