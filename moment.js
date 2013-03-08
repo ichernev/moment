@@ -1182,7 +1182,7 @@
         },
 
         diff : function (input, units, asFloat) {
-            var that = this._isUTC ? moment(input).utc() : moment(input).local(),
+            var that = this._isUTC ? moment(input).zone(this._offset || 0) : moment(input).local(),
                 zoneDiff = (this.zone() - that.zone()) * 6e4,
                 diff, output;
 
@@ -1331,6 +1331,7 @@
             } else {
                 return this._isUTC ? offset : this._d.getTimezoneOffset();
             }
+            return this;
         },
 
         daysInMonth : function () {
