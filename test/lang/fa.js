@@ -2,7 +2,7 @@
 // author: Ebrahim Byagowi : https://github.com/ebraminio
 var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
 
-this["lang:fa"] = {
+exports["lang:fa"] = {
     setUp : function (cb) {
         moment.lang('fa');
         cb();

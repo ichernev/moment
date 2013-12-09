@@ -1,6 +1,6 @@
 var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
 
-this.invalid = {
+exports.invalid = {
     "invalid" : function (test) {
         var m = moment.invalid();
         test.equals(m.isValid(), false);

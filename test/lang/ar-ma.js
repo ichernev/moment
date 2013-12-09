@@ -2,7 +2,7 @@
 // author: Abdel Said : https://github.com/abdelsaid
 var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
 
-this["lang:ar-ma"] = {
+exports["lang:ar-ma"] = {
     setUp : function (cb) {
         moment.lang('ar-ma');
         cb();

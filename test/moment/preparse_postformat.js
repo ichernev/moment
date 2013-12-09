@@ -41,7 +41,7 @@ var symbolLang = {
     }
 };
 
-this.preparse_postformat = {
+exports.preparse_postformat = {
     setUp: function (cb) {
         moment.lang('symbol', symbolLang);
         cb();

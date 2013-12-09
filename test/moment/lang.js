@@ -1,6 +1,6 @@
 var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
 
-this.lang = {
+exports.lang = {
     "library getter" : function (test) {
         var r;
         test.expect(8);

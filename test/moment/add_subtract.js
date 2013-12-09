@@ -1,6 +1,6 @@
 var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
 
-this.add = {
+exports.add = {
     "add short" : function (test) {
         test.expect(12);
 

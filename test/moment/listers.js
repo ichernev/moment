@@ -1,6 +1,6 @@
 var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
 
-this.listers = {
+exports.listers = {
     setUp : function (cb) {
         moment.lang('en');
         cb();

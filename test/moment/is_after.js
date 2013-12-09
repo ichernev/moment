@@ -1,6 +1,6 @@
 var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
 
-this.is_after = {
+exports.is_after = {
     "is after without units" : function (test) {
         test.expect(17);
 

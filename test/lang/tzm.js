@@ -3,7 +3,7 @@
 var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
 
 
-this["lang:tzm"] = {
+exports["lang:tzm"] = {
     setUp : function (cb) {
         moment.lang('tzm');
         cb();

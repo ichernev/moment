@@ -4,7 +4,7 @@ var moment = typeof window  !== 'undefined' ? window.moment : require("../../mom
     English (Canadian)
 *************************************************/
 
-this["lang:en-ca"] = {
+exports["lang:en-ca"] = {
     setUp : function (cb) {
         moment.lang('en-ca');
         cb();

@@ -1,6 +1,6 @@
 var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
 
-this.is_same = {
+exports.is_same = {
     "is same without units" : function (test) {
         test.expect(17);
 

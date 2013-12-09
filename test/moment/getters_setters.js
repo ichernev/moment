@@ -1,6 +1,6 @@
 var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
 
-this.getters_setters = {
+exports.getters_setters = {
     "getters" : function (test) {
         test.expect(8);
 

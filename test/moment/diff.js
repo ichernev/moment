@@ -32,7 +32,7 @@ function dstForYear(year) {
     }
 }
 
-this.diff = {
+exports.diff = {
     "diff" : function (test) {
         test.expect(5);
 

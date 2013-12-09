@@ -1,6 +1,6 @@
 var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
 
-this.format = {
+exports.format = {
     "format YY" : function (test) {
         test.expect(1);
 

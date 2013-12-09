@@ -1,6 +1,6 @@
 var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
 
-this.is_valid = {
+exports.is_valid = {
     "array bad month" : function (test) {
         test.expect(2);
         test.equal(moment([2010, -1]).isValid(), false, 'month -1 invalid');

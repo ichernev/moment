@@ -12,7 +12,7 @@ var getVerifier = function (test) {
     };
 };
 
-this.create = {
+exports.create = {
     "array" : function (test) {
         test.expect(8);
         test.ok(moment([2010]).toDate() instanceof Date, "[2010]");

@@ -3,7 +3,7 @@ var flags = function () {
         return moment.apply(null, arguments).parsingFlags();
     };
 
-this.parsing_flags = {
+exports.parsing_flags = {
 
     'overflow with array' : function (test) {
 

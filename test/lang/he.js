@@ -5,7 +5,7 @@
     Hebrew
 **************************************************/
 
-this["lang:he"] = {
+exports["lang:he"] = {
     setUp : function (cb) {
         moment.lang('he');
         cb();

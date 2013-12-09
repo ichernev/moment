@@ -5,7 +5,7 @@ var moment = typeof window  !== 'undefined' ? window.moment : require("../../mom
       Traditional Chinese
      *************************************************/
 
-this["lang:zh-tw"] = {
+exports["lang:zh-tw"] = {
     setUp : function (cb) {
         moment.lang('zh-tw');
         cb();
