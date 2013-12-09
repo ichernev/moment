@@ -1,4 +1,4 @@
-var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
+var moment = require("../../moment");
 
 exports.getters_setters = {
     "getters" : function (test) {

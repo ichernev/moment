@@ -2,7 +2,7 @@
 // language : Georgian (ka)
 // author : Irakli Janiashvili : https://github.com/irakli-janiashvili
 
-var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
+var moment = require("../../moment");
 
 exports["lang:ka"] = {
     setUp : function (cb) {

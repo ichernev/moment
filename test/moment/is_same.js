@@ -1,4 +1,4 @@
-var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
+var moment = require("../../moment");
 
 exports.is_same = {
     "is same without units" : function (test) {

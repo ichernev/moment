@@ -1,6 +1,6 @@
 // moment.js Persian (fa) tests
 // author: Ebrahim Byagowi : https://github.com/ebraminio
-var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
+var moment = require("../../moment");
 
 exports["lang:fa"] = {
     setUp : function (cb) {

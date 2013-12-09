@@ -1,5 +1,5 @@
-var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
-var flags = function () {
+var moment = require('../../moment'),
+    flags = function () {
         return moment.apply(null, arguments).parsingFlags();
     };
 

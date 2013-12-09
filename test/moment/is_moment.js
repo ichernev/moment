@@ -1,4 +1,4 @@
-var moment = typeof window  !== 'undefined' ? window.moment : require("../../moment");
+var moment = require('../../moment');
 
 exports.is_moment = {
     "is moment object": function (test) {
