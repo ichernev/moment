@@ -338,7 +338,7 @@ exports.format = {
     "weekday formats" : function (test) {
         test.expect(7);
 
-        moment.locale('dow: 3,doy: 5', {week: {dow: 3, doy: 5}});
+        moment.defineLocale('dow: 3,doy: 5', {week: {dow: 3, doy: 5}}, true);
         test.equal(moment([1985, 1,  6]).format('e'), '0', "Feb  6 1985 is Wednesday -- 0th day");
         test.equal(moment([2029, 8, 20]).format('e'), '1', "Sep 20 2029 is Thursday  -- 1st day");
         test.equal(moment([2013, 3, 26]).format('e'), '2', "Apr 26 2013 is Friday    -- 2nd day");
@@ -361,11 +361,11 @@ exports.format = {
     "toJSON skips postformat" : function (test) {
         test.expect(1);
 
-        moment.locale('postformat', {
+        moment.defineLocale('postformat', {
             postformat: function (s) {
                 s.replace(/./g, 'X');
             }
-        });
+        }, true);
         test.equal(moment.utc([2000, 0, 1]).toJSON(), "2000-01-01T00:00:00.000Z", "toJSON doesn't postformat");
         moment.locale('postformat', null);
         test.done();

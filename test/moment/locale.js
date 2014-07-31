@@ -62,11 +62,11 @@ exports.locale = {
     },
 
     "library ensure inheritance" : function (test) {
-        moment.locale('made-up', {
+        moment.defineLocale('made-up', {
             // I put them out of order
             months : "February_March_April_May_June_July_August_September_October_November_December_January".split("_")
             // the rest of the properties should be inherited.
-        });
+        }, true);
 
         test.equal(moment([2012, 5, 6]).format('MMMM'), 'July', 'Override some of the configs');
         test.equal(moment([2012, 5, 6]).format('MMM'), 'Jun', 'But not all of them');
@@ -129,17 +129,16 @@ exports.locale = {
 
     "defineLocale" : function (test) {
         moment.locale("en");
-        moment.defineLocale("dude", {months: ["Movember"]});
-        test.equal(moment().locale(), "dude", "defineLocale also sets it");
+        moment.defineLocale("dude", {months: ["Movember"]}, true);
+        test.equal(moment().locale(), "dude", "defineLocale(key, val, true) also sets it");
         test.equal(moment().locale("dude").locale(), "dude", "defineLocale defines a locale");
         test.done();
-    },
 
-    "library convenience" : function (test) {
-        moment.locale("something", {week: {dow: 3}});
-        moment.locale("something");
-        test.equal(moment.locale(), "something", "locale can be used to create the locale too");
-        test.done();
+        moment.defineLocale("dude2", {}, false);
+        test.equal(moment.locale(), "dude", "defineLocale(key, val, false) doesn't set it");
+
+        moment.defineLocale("dude3", {});
+        test.equal(moment.locale(), "dude", "defineLocale(key, val) doesn't set it");
     },
 
     "instance locale method" : function (test) {
@@ -335,13 +334,13 @@ exports.locale = {
             return 'default';
         }
 
-        moment.locale('made-up-2', {
+        moment.defineLocale('made-up-2', {
             months : fakeReplace,
             monthsShort : fakeReplace,
             weekdays : fakeReplace,
             weekdaysShort : fakeReplace,
             weekdaysMin : fakeReplace
-        });
+        }, true);
 
         test.equal(moment().format('[test] dd ddd dddd MMM MMMM'), 'test test test test test test', 'format month name function should be able to access the format string');
         test.equal(moment([2011, 0, 1]).format('dd ddd dddd MMM MMMM'), 'date date date date date', 'format month name function should be able to access the moment object');
@@ -353,15 +352,15 @@ exports.locale = {
     "changing parts of a locale config" : function (test) {
         test.expect(2);
 
-        moment.locale('partial-lang', {
+        moment.defineLocale('partial-lang', {
             months : 'a b c d e f g h i j k l'.split(' ')
-        });
+        }, true);
 
         test.equal(moment([2011, 0, 1]).format('MMMM'), 'a', 'should be able to set locale values when creating the localeuage');
 
-        moment.locale('partial-lang', {
+        moment.defineLocale('partial-lang', {
             monthsShort : 'A B C D E F G H I J K L'.split(' ')
-        });
+        }, true);
 
         test.equal(moment([2011, 0, 1]).format('MMMM MMM'), 'a A', 'should be able to set locale values after creating the localeuage');
 
@@ -371,11 +370,11 @@ exports.locale = {
     "start/endOf week feature for first-day-is-monday locales" : function (test) {
         test.expect(2);
 
-        moment.locale('monday-lang', {
+        moment.defineLocale('monday-lang', {
             week : {
                 dow : 1 // Monday is the first day of the week
             }
-        });
+        }, true);
 
         moment.locale('monday-lang');
         test.equal(moment([2013, 0, 1]).startOf('week').day(), 1, 'for locale monday-lang first day of the week should be monday');
@@ -387,12 +386,12 @@ exports.locale = {
     "meridiem parsing" : function (test) {
         test.expect(2);
 
-        moment.locale('meridiem-parsing', {
+        moment.defineLocale('meridiem-parsing', {
             meridiemParse : /[bd]/i,
             isPM : function (input) {
                 return input === 'b';
             }
-        });
+        }, true);
 
         moment.locale('meridiem-parsing');
         test.equal(moment('2012-01-01 3b', 'YYYY-MM-DD ha').hour(), 15, 'Custom parsing of meridiem should work');
@@ -402,9 +401,9 @@ exports.locale = {
     },
 
     "invalid date formatting" : function (test) {
-        moment.locale('has-invalid', {
+        moment.defineLocale('has-invalid', {
             invalidDate: 'KHAAAAAAAAAAAN!'
-        });
+        }, true);
 
         test.equal(moment.invalid().format(), "KHAAAAAAAAAAAN!");
         test.equal(moment.invalid().format('YYYY-MM-DD'), "KHAAAAAAAAAAAN!");
@@ -412,12 +411,12 @@ exports.locale = {
         test.done();
     },
 
-    "return locale name" : function (test) {
+    "defineLocale return new locale's data" : function (test) {
         test.expect(1);
 
-        var registered = moment.locale('return-this', {});
+        var registered = moment.defineLocale('return-this', {}, true);
 
-        test.equal(registered, 'return-this', 'returns the locale configured');
+        test.equal(registered._abbr, 'return-this', 'returns the newly created locale data');
 
         test.done();
     },

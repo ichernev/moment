@@ -1925,22 +1925,21 @@
     moment.lang = deprecate(
         "moment.lang is deprecated. Use moment.locale instead.",
         function (key, value) {
-            return moment.locale(key, value);
+            if (value !== undefined) {
+                moment.defineLocale(key, value, true);
+            } else if (key !== undefined) {
+                moment.locale(key);
+            }
+            return moment.locale();
         }
     );
 
-    // This function will load locale and then set the global locale.  If
-    // no arguments are passed in, it will simply return the current global
-    // locale key.
-    moment.locale = function (key, values) {
+    // This function sets the global locale.  If no arguments are passed in, it
+    // will simply return the current global locale key.
+    moment.locale = function (key) {
         var data;
         if (key) {
-            if (typeof(values) !== "undefined") {
-                data = moment.defineLocale(key, values);
-            }
-            else {
-                data = moment.localeData(key);
-            }
+            data = moment.localeData(key);
 
             if (data) {
                 moment.duration._locale = moment._locale = data;
@@ -1950,7 +1949,7 @@
         return moment._locale._abbr;
     };
 
-    moment.defineLocale = function (name, values) {
+    moment.defineLocale = function (name, values, use) {
         if (values !== null) {
             values.abbr = name;
             if (!locales[name]) {
@@ -1959,7 +1958,9 @@
             locales[name].set(values);
 
             // backwards compat for now: also set the locale
-            moment.locale(name);
+            if (use) {
+                moment.locale(name);
+            }
 
             return locales[name];
         } else {
@@ -2755,7 +2756,7 @@
 
 
     // Set default locale, other locale will inherit from English.
-    moment.locale('en', {
+    moment.defineLocale('en', {
         ordinal : function (number) {
             var b = number % 10,
                 output = (toInt(number % 100 / 10) === 1) ? 'th' :
@@ -2764,7 +2765,7 @@
                 (b === 3) ? 'rd' : 'th';
             return number + output;
         }
-    });
+    }, true);
 
     /* EMBED_LOCALES */
 

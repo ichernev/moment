@@ -42,7 +42,7 @@ var moment = require("../../moment"),
 
 exports.preparsePostformat = {
     setUp: function (cb) {
-        moment.locale('symbol', symbolLang);
+        moment.defineLocale('symbol', symbolLang, true);
         moment.createFromInputFallback = function () {
             throw new Error("input not handled by moment");
         };

@@ -571,7 +571,7 @@ exports.create = {
     },
 
     "parsing week year/week/weekday (dow 1, doy 4)" : function (test) {
-        moment.locale("dow:1,doy:4", {week: {dow: 1, doy: 4}});
+        moment.defineLocale("dow:1,doy:4", {week: {dow: 1, doy: 4}}, true);
 
         test.equal(moment.utc("2007-01", "gggg-ww").format(), "2007-01-01T00:00:00+00:00", "2007 week 1 (1st Jan Mon)");
         test.equal(moment.utc("2008-01", "gggg-ww").format(), "2007-12-31T00:00:00+00:00", "2008 week 1 (1st Jan Tue)");
@@ -586,7 +586,7 @@ exports.create = {
     },
 
     "parsing week year/week/weekday (dow 1, doy 7)" : function (test) {
-        moment.locale("dow:1,doy:7", {week: {dow: 1, doy: 7}});
+        moment.defineLocale("dow:1,doy:7", {week: {dow: 1, doy: 7}}, true);
 
         test.equal(moment.utc("2007-01", "gggg-ww").format(), "2007-01-01T00:00:00+00:00", "2007 week 1 (1st Jan Mon)");
         test.equal(moment.utc("2008-01", "gggg-ww").format(), "2007-12-31T00:00:00+00:00", "2008 week 1 (1st Jan Tue)");
@@ -600,7 +600,7 @@ exports.create = {
     },
 
     "parsing week year/week/weekday (dow 0, doy 6)" : function (test) {
-        moment.locale("dow:0,doy:6", {week: {dow: 0, doy: 6}});
+        moment.defineLocale("dow:0,doy:6", {week: {dow: 0, doy: 6}}, true);
 
         test.equal(moment.utc("2007-01", "gggg-ww").format(), "2006-12-31T00:00:00+00:00", "2007 week 1 (1st Jan Mon)");
         test.equal(moment.utc("2008-01", "gggg-ww").format(), "2007-12-30T00:00:00+00:00", "2008 week 1 (1st Jan Tue)");
@@ -614,7 +614,7 @@ exports.create = {
     },
 
     "parsing week year/week/weekday (dow 6, doy 12)" : function (test) {
-        moment.locale("dow:6,doy:12", {week: {dow: 6, doy: 12}});
+        moment.defineLocale("dow:6,doy:12", {week: {dow: 6, doy: 12}}, true);
 
         test.equal(moment.utc("2007-01", "gggg-ww").format(), "2006-12-30T00:00:00+00:00", "2007 week 1 (1st Jan Mon)");
         test.equal(moment.utc("2008-01", "gggg-ww").format(), "2007-12-29T00:00:00+00:00", "2008 week 1 (1st Jan Tue)");
@@ -819,7 +819,7 @@ exports.create = {
         moment.defineLocale('parselocale', {
             months : "one_two_three_four_five_six_seven_eight_nine_ten_eleven_twelve".split('_'),
             monthsShort : "one_two_three_four_five_six_seven_eight_nine_ten_eleven_twelve".split("_")
-        });
+        }, true);
 
         moment.locale('en');
 
