@@ -50,5 +50,5 @@
         ordinal : function (number) {
             return number + (number === 1 ? 'er' : '');
         }
-    });
+    }, true);
 }));

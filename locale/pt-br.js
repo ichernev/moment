@@ -52,5 +52,5 @@
             yy : "%d anos"
         },
         ordinal : '%dº'
-    });
+    }, true);
 }));

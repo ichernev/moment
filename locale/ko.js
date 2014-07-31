@@ -59,5 +59,5 @@
         isPM : function (token) {
             return token === "오후";
         }
-    });
+    }, true);
 }));

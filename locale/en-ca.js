@@ -55,5 +55,5 @@
                 (b === 3) ? 'rd' : 'th';
             return number + output;
         }
-    });
+    }, true);
 }));
